@@ -1,8 +1,9 @@
 import os
-import pandas as pd
 from io import StringIO
-from bs4 import BeautifulSoup
+
 import lxml
+import pandas as pd
+from bs4 import BeautifulSoup
 
 SCORE_DIR = "data/scores"
 # %%

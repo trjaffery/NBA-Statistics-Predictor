@@ -9,11 +9,12 @@
 # 4. Predict which team will be the NBA Champions in 2025
 
 import os
-from bs4 import BeautifulSoup
-from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeout
 import time
-import pandas as pd
 
+import pandas as pd
+from bs4 import BeautifulSoup
+from playwright.sync_api import TimeoutError as PlaywrightTimeout
+from playwright.sync_api import sync_playwright
 
 # seasons that we will be pulling from
 SEASONS = list(range(2016, 2025))
