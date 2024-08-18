@@ -11,7 +11,6 @@
 import os
 import time
 
-import pandas as pd
 from bs4 import BeautifulSoup
 from playwright.sync_api import TimeoutError as PlaywrightTimeout
 from playwright.sync_api import sync_playwright
@@ -27,13 +26,15 @@ SCORES_DIR = os.path.join(DATA_DIR, "scores")
 
 # playwright works asynchronously, so we have to deal with that
 # playwright opens up a web browser on a different thread
-# since windows wasn't allowing us to use async properly with playwright, we're going to use sync now
+# since windows wasn't allowing us to use async properly with playwright,
+# we're going to use sync now
 def get_html(url, selector, sleep=5, retries=3):
     html = None
-    for i in range(1, retries+1):
-        # pauses our program for a few seconds so the webscapper doesn't get blacklisted from the website
+    for i in range(1, retries + 1):
+        # pauses our program for a few seconds
+        # so the webscapper doesn't get blacklisted from the website
         time.sleep(sleep * i)
-        try: 
+        try:
             # initializes our playwright instance for us
             with sync_playwright() as p:
                 # launches chromium which is the open source version of chrome
@@ -50,7 +51,7 @@ def get_html(url, selector, sleep=5, retries=3):
         except PlaywrightTimeout:
             print(f"Timeout error on {url}")
             continue
-        # gets executed when the try succeeds and breaks us out with the html info we need
+            # gets executed when the try succeeds and breaks us out with the html info we need
         else:
             break
     return html
