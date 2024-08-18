@@ -29,7 +29,7 @@ SCORES_DIR = os.path.join(DATA_DIR, "scores")
 # since windows wasn't allowing us to use async properly with playwright,
 # we're going to use sync now
 def get_html(url, selector, sleep=5, retries=3):
-    html = None
+    html = ""
     for i in range(1, retries + 1):
         # pauses our program for a few seconds
         # so the webscapper doesn't get blacklisted from the website
